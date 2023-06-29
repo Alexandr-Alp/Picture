@@ -89,9 +89,9 @@ namespace Picture
 
         private bool isNewPicture(string file)
         {
+            Pictures pictureWindows = new Pictures(file);
             foreach (Pictures picture in pictureList)
             {
-                Pictures pictureWindows = new Pictures(file);
                 if (pictureWindows.GetContent() == picture.GetContent())
                 {
                     return false;
