@@ -21,7 +21,9 @@ namespace WinFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            init();
+            textbox_path.Text = comperePictures.initPath();
+            textBox_maxCount.Text = comperePictures.initMaxCount().ToString();
+
             comperePictures.setPictureList();
             comperePictures.comperePictures();
         }
@@ -41,16 +43,9 @@ namespace WinFormsApp1
             }
         }
 
-        private void init()
-        {
-            textbox_path.Text = comperePictures.initPath();
-            textBox_maxCount.Text = comperePictures.initMaxCount().ToString();
-        }
-
         private void textBox_maxCount_TextChanged(object sender, EventArgs e)
         {
-            comperePictures.setMaxCount(int.Parse(textBox_maxCount.Text));
-            
+            comperePictures.setMaxCount(int.Parse(textBox_maxCount.Text));   
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
