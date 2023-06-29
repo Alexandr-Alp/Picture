@@ -76,18 +76,7 @@ namespace Picture
                 Image image = Image.FromFile(file);
                 if (image.Width >= 1080)
                 {
-                    bool flag = true;
-                    foreach (Pictures picture in pictureList)
-                    {
-                        Pictures pictureWindows = new Pictures(file);
-                        if (pictureWindows.GetContent() == picture.GetContent())
-                        {
-                            flag = false;
-                            break;
-
-                        }
-                    }
-                    if (flag)
+                    if (isNewPicture(file))
                     {
                         File.Copy(file,
                                 path + "\\" + DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString().Replace(",", "") + ".jpg");
@@ -96,6 +85,19 @@ namespace Picture
                 image.Dispose();
             }
             compliteApplication();
+        }
+
+        private bool isNewPicture(string file)
+        {
+            foreach (Pictures picture in pictureList)
+            {
+                Pictures pictureWindows = new Pictures(file);
+                if (pictureWindows.GetContent() == picture.GetContent())
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void compliteApplication()
