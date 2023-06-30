@@ -13,10 +13,15 @@ namespace Picture
         private List<Pictures> pictureList = new List<Pictures>();
         private readonly string pathWindows = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Packages\\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\\LocalState\\Assets";
         private string path = string.Empty;
-        private int maxCount = 200;
-        private bool autoStart = false;
+        private int maxCount;
+        private bool autoStart;
 
         private RegistryWork registryWork = new RegistryWork();
+
+        public  ComperePictures(bool autoStart)
+        {
+            setAutoStart(autoStart);
+        }
 
         public void setAutoStart(bool autoStart)
         {

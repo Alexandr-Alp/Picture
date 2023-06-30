@@ -11,11 +11,11 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private ComperePictures comperePictures = new ComperePictures();
+        private ComperePictures comperePictures;
 
         public Form1(bool autoStart)
         {
-            comperePictures.setAutoStart(autoStart);
+            comperePictures = new ComperePictures(autoStart);
             InitializeComponent();
         }
 
