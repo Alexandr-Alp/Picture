@@ -120,6 +120,7 @@ namespace Picture
         public void setPath(string path)
         {
             this.path = path;
+            registryWork.setPath(path);
         }
 
         public void keyClose()
