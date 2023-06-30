@@ -52,7 +52,7 @@ namespace Picture
         {
             if (path != string.Empty)
             {
-                string[] filesName = Directory.GetFiles(path);
+                string[] filesName = Directory.GetFiles(path, "*.jpg");
 
                 if (maxCount <= filesName.Length && autoStart)
                 {
@@ -72,17 +72,22 @@ namespace Picture
 
             foreach (string file in filesName)
             {
-
-                Image image = Image.FromFile(file);
-                if (image.Width >= 1080)
+                try
                 {
-                    if (isNewPicture(file))
+                    Image image = Image.FromFile(file);
+                    if (image.Height >= 1080 && image.Width > image.Height)
                     {
-                        File.Copy(file,
-                                path + "\\" + DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString().Replace(",", "") + ".jpg");
+                        if (isNewPicture(file))
+                        {
+                            File.Copy(file,
+                                    path + "\\" + DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))
+                                    .TotalSeconds.ToString().Replace(",", "") + ".jpg");
+                        }
                     }
+                    image.Dispose();
                 }
-                image.Dispose();
+                catch { }
+                
             }
             compliteApplication();
         }

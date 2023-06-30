@@ -19,7 +19,7 @@ namespace WinFormsApp1
         {
             if (content == string.Empty)
             {
-                this.content = File.ReadAllText(fileName);
+                content = File.ReadAllText(fileName);
             }
             return content;
         }
