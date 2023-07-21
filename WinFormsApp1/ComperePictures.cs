@@ -53,7 +53,7 @@ namespace Picture
             registryWork.setMinCount(maxCount);
         }
 
-        public void setPictureList()
+        public void SetAndComperePictureList()
         {
             if (path != string.Empty)
             {
@@ -68,10 +68,12 @@ namespace Picture
                 {
                     pictureList.Add(new Pictures(file));
                 }
+
+                comperePictures();
             }
         }
 
-        public void comperePictures()
+        private void comperePictures()
         {
             string[] filesName = Directory.GetFiles(this.pathWindows);
 

@@ -24,8 +24,7 @@ namespace WinFormsApp1
             textbox_path.Text = comperePictures.initPath();
             textBox_maxCount.Text = comperePictures.initMaxCount().ToString();
 
-            comperePictures.setPictureList();
-            comperePictures.comperePictures();
+            comperePictures.SetAndComperePictureList();
         }
 
         private void button1_Click(object sender, EventArgs e)
