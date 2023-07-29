@@ -9,13 +9,13 @@ namespace Picture
 {
     internal class RegistryWork
     {
-        private RegistryKey _key = Registry.CurrentUser.CreateSubKey(@"Software\Picture");
+        private readonly RegistryKey _key = Registry.CurrentUser.CreateSubKey(@"Software\Picture");
 
-        public void addAutoStart()
+        public void AddAutoStart()
         {
             string PICTURE = "Picture.exe";
             RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
-            string valueInRun = setNotNuleble(key.GetValue(PICTURE) as string);
+            string valueInRun = SetNotNuleble(key.GetValue(PICTURE) as string);
             string pathExe = "\"" + Environment.CurrentDirectory + "\\" + PICTURE + "\" silent";
             if (valueInRun != pathExe)
             {
@@ -24,36 +24,36 @@ namespace Picture
             key.Close();
         }
 
-        private string getKeyValue(string parametr)
+        private string GetKeyValue(string parametr)
         {
-            return setNotNuleble(_key.GetValue(parametr) as string);
+            return SetNotNuleble(_key.GetValue(parametr) as string);
 
         }
 
-        private string setNotNuleble(string? value)
+        private string SetNotNuleble(string? value)
         {
             return value == null ? string.Empty : value.ToString();
         }
 
-        public string initPath()
+        public string InitPath()
         {
-            return getKeyValue("path");
+            return GetKeyValue("path");
         }
         public string initMaxCount()
         {
-            return getKeyValue("count");
+            return GetKeyValue("count");
         }
 
-        public void setMinCount(int maxCount) {
+        public void SetMinCount(int maxCount) {
             _key.SetValue("count", maxCount.ToString());
         }
 
-        public void setPath(string path)
+        public void SetPath(string path)
         {
             _key.SetValue("path", path);
         }
 
-        public void keyClose()
+        public void KeyClose()
         {
             _key.Close();
         }

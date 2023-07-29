@@ -16,29 +16,24 @@ namespace Picture
         private int maxCount;
         private bool autoStart;
 
-        private RegistryWork registryWork = new RegistryWork();
+        private readonly RegistryWork _registryWork = new();
 
         public  ComperePictures(bool autoStart)
-        {
-            setAutoStart(autoStart);
-        }
-
-        public void setAutoStart(bool autoStart)
         {
             this.autoStart = autoStart;
         }
 
-        public string initPath()
+        public string InitPath()
         {
-            this.path = registryWork.initPath();
+            this.path = _registryWork.InitPath();
             return this.path;
         }
 
-        public int initMaxCount()
+        public int InitMaxCount()
         {
             try
             {
-                this.maxCount = int.Parse(registryWork.initMaxCount());
+                this.maxCount = int.Parse(_registryWork.initMaxCount());
             }
             catch
             {
@@ -47,10 +42,10 @@ namespace Picture
             return this.maxCount;
         }
 
-        public void setMaxCount(int maxCount)
+        public void SetMaxCount(int maxCount)
         {
             this.maxCount = maxCount;
-            registryWork.setMinCount(maxCount);
+            _registryWork.SetMinCount(maxCount);
         }
 
         public void SetAndComperePictureList()
@@ -69,11 +64,11 @@ namespace Picture
                     pictureList.Add(new Pictures(file));
                 }
 
-                comperePictures();
+                CompereWinPictures();
             }
         }
 
-        private void comperePictures()
+        private void CompereWinPictures()
         {
             string[] filesName = Directory.GetFiles(this.pathWindows);
 
@@ -84,7 +79,7 @@ namespace Picture
                     Image image = Image.FromFile(file);
                     if (image.Height >= 1080 && image.Width > image.Height)
                     {
-                        if (isNewPicture(file))
+                        if (IsNewPicture(file))
                         {
                             File.Copy(file,
                                     path + "\\" + DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))
@@ -96,12 +91,12 @@ namespace Picture
                 catch { }
                 
             }
-            compliteApplication();
+            CompliteApplication();
         }
 
-        private bool isNewPicture(string file)
+        private bool IsNewPicture(string file)
         {
-            Pictures pictureWindows = new Pictures(file);
+            Pictures pictureWindows = new(file);
             foreach (Pictures picture in pictureList)
             {
                 if (pictureWindows.GetContent() == picture.GetContent())
@@ -112,7 +107,7 @@ namespace Picture
             return true;
         }
 
-        private void compliteApplication()
+        private void CompliteApplication()
         {
             if (autoStart)
             {
@@ -120,19 +115,19 @@ namespace Picture
             }
             else
             {
-                registryWork.addAutoStart();
+                _registryWork.AddAutoStart();
             }
         }
 
-        public void setPath(string path)
+        public void SetPath(string path)
         {
             this.path = path;
-            registryWork.setPath(path);
+            _registryWork.SetPath(path);
         }
 
         public void keyClose()
         {
-            registryWork.keyClose();
+            _registryWork.KeyClose();
         }
 
     }

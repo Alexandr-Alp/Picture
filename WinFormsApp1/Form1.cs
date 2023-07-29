@@ -21,8 +21,8 @@ namespace WinFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            textbox_path.Text = comperePictures.initPath();
-            textBox_maxCount.Text = comperePictures.initMaxCount().ToString();
+            textbox_path.Text = comperePictures.InitPath();
+            textBox_maxCount.Text = comperePictures.InitMaxCount().ToString();
 
             comperePictures.SetAndComperePictureList();
         }
@@ -38,13 +38,13 @@ namespace WinFormsApp1
             {
                 string path = folderBrowserDialog1.SelectedPath;
                 textbox_path.Text = path;
-                comperePictures.setPath(path);
+                comperePictures.SetPath(path);
             }
         }
 
         private void textBox_maxCount_TextChanged(object sender, EventArgs e)
         {
-            comperePictures.setMaxCount(int.Parse(textBox_maxCount.Text));   
+            comperePictures.SetMaxCount(int.Parse(textBox_maxCount.Text));   
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

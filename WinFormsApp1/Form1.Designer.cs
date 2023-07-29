@@ -58,6 +58,7 @@
             label1.Size = new Size(497, 106);
             label1.TabIndex = 1;
             label1.Text = "Запустите программу из того места где она будет лежать постоянно.";
+            label1.Click += label1_Click;
             // 
             // button2
             // 
