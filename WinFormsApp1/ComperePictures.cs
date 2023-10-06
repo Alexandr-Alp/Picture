@@ -10,7 +10,7 @@ namespace Picture
 {
     internal class ComperePictures
     {
-        private List<Pictures> pictureList = new List<Pictures>();
+        private List<Pictures> pictureList = new();
         private readonly string pathWindows = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Packages\\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\\LocalState\\Assets";
         private string path = string.Empty;
         private int maxCount;
@@ -37,7 +37,7 @@ namespace Picture
             }
             catch
             {
-                this.maxCount = 400;
+                this.maxCount = 600;
             }
             return this.maxCount;
         }

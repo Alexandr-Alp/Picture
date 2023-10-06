@@ -29,7 +29,7 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace WinFormsApp1
 
         private void textBox_maxCount_TextChanged(object sender, EventArgs e)
         {
-            comperePictures.SetMaxCount(int.Parse(textBox_maxCount.Text));   
+            comperePictures.SetMaxCount(int.Parse(textBox_maxCount.Text));
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -56,6 +56,11 @@ namespace WinFormsApp1
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
                 e.Handled = true;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
